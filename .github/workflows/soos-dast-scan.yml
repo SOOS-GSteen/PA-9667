@@ -36,14 +36,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@7afaf1479f564b352de45e4e47cbcce82b88710b 
+        uses: soos-io/soos-dast-github-action@7afaf1479f564b352de45e4e47cbcce82b88710b
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
-          api_url: "https://qa-api.soos.io/api/"
-          project_name: "GH test"
+          project_name: "<YOUR-PROJECT-NAME>"
           scan_mode: "baseline"
-          target_url: "https://brokencrystals.com/"
+          target_url: "https://www.example.com/"
           export_format: "Sarif"
           export_file_type: "Json"
       - name: Find and rename SARIF file since it is unique
