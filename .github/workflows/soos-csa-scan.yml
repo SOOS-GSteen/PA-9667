@@ -1,0 +1,18 @@
+name: SOOS CSA Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  soos_csa:
+    name: SOOS CSA
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run SOOS CSA Analysis
+        uses: soos-io/soos-csa-github-action@37864a7f871f39e47d3fb4117b446652042a04b8
+        with:
+          other_docker_run_options: '-v /var/run/docker.sock:/var/run/docker.sock'
+          client_id: ${{ secrets.SOOS_CLIENT_ID }}
+          api_key: ${{ secrets.SOOS_API_KEY }}
+          project_name: "PA-9667 csa scan"
+          target_image: "busybox:unstable"
